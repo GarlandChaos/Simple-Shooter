@@ -35,4 +35,11 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Frame Rate Independent Rotation")
 	float RotationRate = 10.f;
+
+private:
+	UPROPERTY(EditDefaultsOnly, Category = "Equipment")
+	TSubclassOf<class AGun> GunClass = nullptr;
+
+	UPROPERTY()
+	AGun* Gun = nullptr;
 };

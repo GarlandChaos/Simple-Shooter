@@ -2,6 +2,7 @@
 
 
 #include "ShooterCharacter.h"
+#include "Gun.h"
 
 // Sets default values
 AShooterCharacter::AShooterCharacter()
@@ -16,6 +17,10 @@ void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	FActorSpawnParameters GunSpawnParameters = FActorSpawnParameters();
+	//GunSpawnParameters.Owner = this;
+	//GunSpawnParameters.Instigator = this;
+	Gun = GetWorld()->SpawnActor<AGun>(GunClass,GetActorLocation(), GetActorRotation(), GunSpawnParameters);
 }
 
 // Called every frame
