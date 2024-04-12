@@ -48,4 +48,6 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
 	FName WeaponSocketName = FName();
+
+	void Fire();
 };

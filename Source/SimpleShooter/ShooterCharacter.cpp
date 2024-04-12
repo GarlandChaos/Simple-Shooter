@@ -48,6 +48,7 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAxis("LookRight", this, &APawn::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("LookRightFrameRateIndependent", this, &AShooterCharacter::LookRightFrameRateIndependent);
 	PlayerInputComponent->BindAction("Jump", EInputEvent::IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("Fire", EInputEvent::IE_Pressed, this, &AShooterCharacter::Fire);
 }
 
 void AShooterCharacter::MoveForward(float Value)
@@ -68,4 +69,14 @@ void AShooterCharacter::LookUpFrameRateIndependent(float Value)
 void AShooterCharacter::LookRightFrameRateIndependent(float Value)
 {
 	AddControllerYawInput(Value * RotationRate * GetWorld()->GetDeltaSeconds());
+}
+
+void AShooterCharacter::Fire()
+{
+	if (!Gun)
+	{
+		return;
+	}
+
+	Gun->Fire();
 }

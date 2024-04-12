@@ -6,6 +6,8 @@
 #include "GameFramework/Actor.h"
 #include "Gun.generated.h"
 
+class UParticleSystem;
+
 UCLASS()
 class SIMPLESHOOTER_API AGun : public AActor
 {
@@ -14,6 +16,8 @@ class SIMPLESHOOTER_API AGun : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AGun();
+
+	void Fire();
 
 protected:
 	// Called when the game starts or when spawned
@@ -29,4 +33,13 @@ private:
 
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* Mesh = nullptr;
+
+	//UPROPERTY(VisibleAnywhere)
+	//USceneComponent* SpawnFireTransform = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = "Visual Effects")
+	UParticleSystem* FireParticleSystem = nullptr;
+	
+	UPROPERTY(EditAnywhere, Category = "Visual Effects")
+	FName FireParticleSocketName = FName();
 };
