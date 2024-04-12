@@ -17,10 +17,16 @@ void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	FActorSpawnParameters GunSpawnParameters = FActorSpawnParameters();
+	//FActorSpawnParameters GunSpawnParameters = FActorSpawnParameters();
 	//GunSpawnParameters.Owner = this;
 	//GunSpawnParameters.Instigator = this;
-	Gun = GetWorld()->SpawnActor<AGun>(GunClass,GetActorLocation(), GetActorRotation(), GunSpawnParameters);
+	Gun = GetWorld()->SpawnActor<AGun>(GunClass);
+	//Hide default weapon
+	GetMesh()->HideBoneByName(WeaponBoneName, EPhysBodyOp::PBO_None);
+	//Attach Gun to the socket created in the weapon bone
+	Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, WeaponSocketName);
+	//Set Gun Owner
+	Gun->SetOwner(this);
 }
 
 // Called every frame

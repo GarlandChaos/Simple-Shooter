@@ -37,9 +37,15 @@ public:
 	float RotationRate = 10.f;
 
 private:
-	UPROPERTY(EditDefaultsOnly, Category = "Equipment")
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
 	TSubclassOf<class AGun> GunClass = nullptr;
 
 	UPROPERTY()
 	AGun* Gun = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	FName WeaponBoneName = FName();
+
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	FName WeaponSocketName = FName();
 };
