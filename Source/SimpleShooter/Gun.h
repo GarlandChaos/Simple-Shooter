@@ -42,4 +42,13 @@ private:
 	
 	UPROPERTY(EditAnywhere, Category = "Visual Effects")
 	FName FireParticleSocketName = FName();
+	
+	UPROPERTY(EditAnywhere, Category = "Visual Effects")
+	UParticleSystem* HitParticleSystem = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = "Gun Settings")
+	float FireRange = 0.f;
+
+	UPROPERTY(EditAnywhere, Category = "Gun Settings")
+	float Damage = 20.f;
 };
